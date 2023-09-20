@@ -35,10 +35,54 @@ export default function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const onAddChain = async () => {
+    await provider.request({
+      "method": "wallet_addEthereumChain",
+      "params": [
+        {
+          "chainId": "0xcc",
+          "chainName": "opBNB",
+          "rpcUrls": [
+            "https://opbnb-mainnet-rpc.bnbchain.org"
+          ],
+          "nativeCurrency": {
+            "name": "BNB",
+            "symbol": "BNB",
+            "decimals": 18
+          },
+        }
+      ]
+    })
+  }
+
+  const onAddChain5600 = async () => {
+    await provider.request({
+      "method": "wallet_addEthereumChain",
+      "params": [
+        {
+          "chainId": "0x15e0",
+          "chainName": "GF testnet",
+          "rpcUrls": [
+            "https://gnfd-testnet-fullnode-tendermint-us.bnbchain.org"
+          ],
+          "nativeCurrency": {
+            "name": "tBNB",
+            "symbol": "tBNB",
+            "decimals": 18
+          },
+        }
+      ]
+    })
+  }
+
+  
+
   return <>
     <div>account: {JSON.stringify(account)}</div>
     <div>chain: {JSON.stringify(chain)}</div>
+    <button onClick={onAddChain}>add 204</button>
+    <button onClick={onAddChain5600}>add 5600</button>
     <br />
-    <div>log: {log.map((item, index) => <div key={index}>{item}</div>)}</div>
+    {/* <div>log: {log.map((item, index) => <div key={index}>{item}</div>)}</div> */}
   </>
 }
