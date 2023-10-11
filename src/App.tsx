@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useState } from "react"
 
-const provider = (window as any).trustWallet
+const provider = (window as any).trustwallet
+
+// This will print 'undefined'
+console.log(provider.request, '===')
+setTimeout(() => {
+  // This is normal
+  console.log(provider.request, '===')
+}, 1000)
 
 export default function App() {
 
