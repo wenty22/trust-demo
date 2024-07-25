@@ -3,11 +3,12 @@ import { useCallback, useEffect, useState } from "react"
 const provider = (window as any).trustwallet
 
 // This will print 'undefined'
-console.log(provider.request, '===')
+console.log(provider.request)
 setTimeout(() => {
   // This is normal
-  console.log(provider.request, '===')
+  console.log(provider.request)
 }, 1000)
+
 
 export default function App() {
 
@@ -23,13 +24,13 @@ export default function App() {
   useEffect(() => {
     const onUpdate = async () => {
       addLog('eth_requestAccounts start')
-      const account = await provider.request({
+      const account = await p.request({
         method: 'eth_requestAccounts',
       })
       addLog('eth_requestAccounts end')
   
       addLog('eth_chainId start')
-      const chain = await provider.request({
+      const chain = await p.request({
         method: 'eth_chainId',
       })
       addLog('eth_chainId end')
